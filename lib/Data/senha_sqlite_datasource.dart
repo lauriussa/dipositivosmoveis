@@ -1,3 +1,4 @@
+import 'package:gerenciadorsenhas/Data/conexao.dart';
 import 'package:gerenciadorsenhas/Data/senha_entity.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -13,7 +14,7 @@ class senhaSQLiteDatasource {
       onCreate: (db, version) async {
         await db.execute(CREATE_SENHA_TABLE_SCRIPT);
 
-       /* await db.rawInsert('''insert into $SENHA_TABLE_NAME(
+/* await db.rawInsert('''insert into $SENHA_TABLE_NAME(
               $SENHA_COLUMN_DESCRICAO,
               $SENHA_COLUMN_LOGIN,
               $SENHA_COLUMN_SENHA)
@@ -69,10 +70,18 @@ class senhaSQLiteDatasource {
     });
   }    
 
-  Future<void> deletarSenha(SenhaEntity senha) async {
-    Database db = await _getDatabase();
+  Future<void> deletarSenhaID(senhaId) async {
+    final db = await Conexao.getConexaoDB();
     await db.transaction((txn) async {
-      await txn.rawUpdate('delete from $SENHA_TABLE_NAME where id = ?', [senha.senhaID]);
+      await txn
+          .rawUpdate('delete from $SENHA_TABLE_NAME where id = ?', [senhaId]);
+    });
+  }
+
+  Future<void> deletarSenha() async {
+    final db = await Conexao.getConexaoDB();
+    await db.transaction((txn) async {
+      await txn.rawUpdate('delete from $SENHA_TABLE_NAME');
     });
   }
 

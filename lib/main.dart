@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'menuprincipal.dart';
 import 'recuperarsenha.dart';
 import 'cadusuario.dart';
- 
 void main() {
   runApp(MyApp());
 }
@@ -127,4 +126,3 @@ class _Login extends StatelessWidget {
         ));
   }
 }
- 

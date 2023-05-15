@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:gerenciadorsenhas/Data/senha_sqlite_datasource..dart';
+import 'package:gerenciadorsenhas/Data/senha_sqlite_datasource.dart';
 import 'package:gerenciadorsenhas/cadsenhas.dart';
 import 'Data/perfil_sqlite_datasource.dart';
 import 'cadcartao.dart';
